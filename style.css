@@ -1,0 +1,35 @@
+#main {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    padding:100px;
+
+
+
+
+
+}
+header {
+    box-sizing: border-box;
+    width:100%;
+    
+    background-color: cadetblue;
+
+}
+#timer {
+    
+    text-align: right;
+
+
+}
+#high {
+    float: left;
+}
+
+
+
+
+
