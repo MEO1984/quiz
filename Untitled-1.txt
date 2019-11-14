@@ -1,0 +1,8 @@
+function ansTest() {
+if ($(this.event.target).attr('data-attribute') === '0') {
+    $("#result").append("Correct!")
+    quesLoop();
+    // To Do: Call function that clears the display and displays the next question
+} else {
+    $("#result").append("Wrong!")
+    // To Do: Call function that removes some time from the timer
