@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Pop Quiz Hotshot</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script defer src="script.js"></script>
 
-
+    <title>Coding Quiz</title>
 </head>
+
 <body>
-    <div id= "top">
-    <button id="high">High Score Holder</button><div id="timer">00</div>
+    <button class="container" id="score">View Highscores</button>
+    <div class="container" id="timer">Score: </div>
+    <div class="container">
+        <div id="results"></div>
+        <div id="finalScore"></div>
+            <form id="name-form" class="hide">
+                <input type="text" placeholder="Enter Name and click enter" name="" id="name-entry"/>
+                <input type="submit" id="enter-btn" class="btn" value="Enter" onclick="submitName()">
+                <br>
+              </form>
+        <div id="question-container" class="hide">
+            <div id="question"></div>
+            <div id="answer-buttons" class="btn-grid"> 
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start Quiz</button>
+            <button id="next-btn" class="next-btn btn hide">Next Question</button>
+        </div>
     </div>
-    <br>
-    <br>
-    <div id="main">
-        <h1>Coding Quiz</h1>
-        <p id="intro">Welcome to my coding quiz! </p>
-        <button id="start" onclick="quesLoop()">Start!</button>
-    </div>
-    <div id= "result"></div>
-
 </body>
-<script src="script.js"></script>
-
-
 </html>
