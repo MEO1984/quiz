@@ -29,6 +29,15 @@
     text-align: center;
 }
 
+#curScore {
+    position: fixed;
+    top: 0;
+    right: 50;
+    width: 20%;
+    font-size: 14px;
+    text-align: center;
+}
+
 body{
     --hue:var(--hue-neutral);
     padding: 0;

@@ -12,6 +12,7 @@ var nameEntryEl = document.getElementById('name-entry');
 var nameForm = document.querySelector("#name-form");
 var enterBtnEl = document.getElementById("enter-btn");
 var timerEl = document.getElementById('timer');
+var scoreEl = document.getElementById('curScore');
 var savedHighscore = [];
 nextButtonEl.addEventListener('click', () =>{
     currentQuestionsIndex++
@@ -29,27 +30,33 @@ function startGame() {
     shuffledQuestions = questions.sort(() => Math.random() - .5); //generate random number to shuffle up questions
     currentQuestionsIndex = 0;
     questionContainerEl.classList.remove('hide');
-    // timerFunction();
+    timerFunction();
     NextQuestion();
 
 }
 
-// function timerFunction(){
-// //timer
-// var timeLeft = questions.length * 15;
-// var timeInterval = setInterval(function () {
-//     timerEl.textContent = ("Time: ") + timeLeft;
-//     timeLeft--;
-//     // timerText.textContent = "";
-//     if (timeLeft === 0) {
-//         timerEl.textContent = "Time: 0";
-//         clearInterval(timeInterval);
-//     }
-//     if  (gameEnd === true) {
-//         clearInterval(timeInterval);
-//     }
-// }, 1000);
-// //end time
+function timerFunction(){
+//timer
+var timeLeft = questions.length * 15;
+var timeInterval = setInterval(function () {
+    timerEl.textContent = ("Time: ") + timeLeft;
+    timeLeft--;
+    if (timeLeft === 0) {
+        timerEl.textContent = "Time: 0";
+        clearInterval(timeInterval);
+         if (confirm("Times up! Play Again?") === true){
+             startGame();
+         }else{
+             startButtonEl.classList.remove('hide');
+             questionContainerEl.classList.add('hide');
+         }
+        
+            
+                
+            }
+    }
+, 1000)}
+//end time
 
 
 function NextQuestion() {
@@ -78,7 +85,6 @@ function showQuestion(question) {
 function reset(){
     clearStatusClass(document.body);
     console.log('reset');
-    finalScore = 0;
     nameEntryEl.classList.add('hide');
     enterBtnEl.classList.add('hide');
     finalScoreEl.classList.add('hide');
@@ -96,10 +102,10 @@ function selectAnswer(e) {
     if (correct){
         resultsEl.innerText = 'Correct!';
         finalScore++;
-        timerEl.innerText = 'Score: ' + finalScore;
+        scoreEl.innerText = 'Score: ' + finalScore;
     } else {
         resultsEl.innerText = 'Incorrect!';
-        timerEl.innerText = 'Score: ' + finalScore;
+        scoreEl.innerText = 'Score: ' + finalScore;
         console.log(finalScore);
     }
     Array.from(answerBtnEl.children).forEach(button =>{
@@ -109,13 +115,14 @@ function selectAnswer(e) {
     nextButtonEl.classList.remove('hide');
     } else {
         if (correct){
-            finalScore++;
-            timerEl.innerText = 'Score: ' + finalScore;
+            scoreEl.innerText = 'Score: ' + finalScore;
         }
         finalScoreEl.classList.remove('hide');
-        timerEl.innerText = 'Score: ' + finalScore;
+        scoreEl.innerText = 'Score: ' + finalScore;
         score();
+        
     }
+    console.log(finalScore);
 }
 
 function score(){
@@ -124,7 +131,7 @@ function score(){
     enterBtnEl.classList.remove('hide');
     resultsEl.innerText = 'All done!';
     finalScoreEl.innerText = 'Your final score: ' + finalScore;
-    timerEl.innerText = 'Score: ' + finalScore;
+    scoreEl.innerText = 'Score: ' + finalScore;
     startButtonEl.innerText = 'Restart'; //restart the quiz
     startButtonEl.classList.remove('hide');
     nameForm.classList.remove('hide');
@@ -195,6 +202,7 @@ function clearStatusClass(element){
     element.classList.remove('correct')
     element.classList.remove('wrong');
 }
+       
 
 var questions = [
     {
@@ -270,8 +278,4 @@ var questions = [
         
     } 
 ]
-
-
-    
-        
 
